@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Linq;
-using System.Threading.Tasks;
+using FluentAssertions;
+using System.Diagnostics;
 
 namespace AI_Manager_Service.Utilities
 {
@@ -15,22 +13,21 @@ namespace AI_Manager_Service.Utilities
         }
 
         /// <summary>
-        /// Checks if the size of the provided file is at least minSize megabytes and at most maxSize megabytes.
+        /// Checks if the size of the provided file is at least minSize bytes and at most maxSize bytes.
         /// </summary>
         /// <param name="file">File to be validated</param>
-        /// <param name="minSize">Smallest allowed size in megabytes</param>
-        /// <param name="maxSize">Largest allowed size in megabytes</param>
+        /// <param name="minSize">Smallest allowed size in bytes</param>
+        /// <param name="maxSize">Largest allowed size in bytes</param>
         /// <returns>True if the condition holds, false otherwise</returns>
         public static bool FileSize(IFormFile file, long minSize, long maxSize)
         {
-            Contract.Requires(file != null);
-            Contract.Requires(minSize <= maxSize);
-            Contract.Requires(minSize >= 0);
+            file.Should().NotBeNull();
+            minSize.Should().BeInRange(1, maxSize);
 
-            long minBytes = minSize * 1024 * 1024;
-            long maxBytes = maxSize * 1024 * 1024;
+            Debug.WriteLineIf(file.Length < minSize, $"minSize: {minSize}\nFile length: {file.Length}");
+            Debug.WriteLineIf(file.Length > maxSize, $"maxSize: {maxSize}\nFile length: {file.Length}");
 
-            return file.Length >= minBytes && file.Length <= maxBytes;
+            return file.Length >= minSize && file.Length <= maxSize;
         }
     }
 }

@@ -2,17 +2,25 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>AI_Service</RootNamespace>
+    <RootNamespace>AI_Manager_Service</RootNamespace>
     <UserSecretsId>6d4a844f-74a3-4bcb-a7a8-6282873f72d1</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="6.0.0-alpha0001" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
+    <PackageReference Include="OpenTelemetry.Exporter.Console" Version="0.5.0-beta.2" />
+    <PackageReference Include="OpenTelemetry.Exporter.Zipkin" Version="0.5.0-beta.2" />
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="0.5.0-beta.2" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="0.5.0-beta.2" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="0.5.0-beta.2" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="0.5.0-beta.2" />
+    <PackageReference Include="xunit" Version="2.4.1" />
   </ItemGroup>
 
 
