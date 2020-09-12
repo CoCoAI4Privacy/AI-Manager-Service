@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using AI_Manager_Service.Options;
 using AI_Manager_Service.Utilities;
+using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace AI_Manager_Service.Controllers
 {
@@ -14,11 +18,15 @@ namespace AI_Manager_Service.Controllers
     [Route("[controller]")]
     public class ProcessController : ControllerBase
     {
-        private readonly ILogger<ProcessController> _logger;
+        private readonly ApiOptions ApiOptions;
+        private readonly ILogger<ProcessController> Logger;
 
-        public ProcessController(ILogger<ProcessController> logger)
+        public ProcessController(IOptions<ApiOptions> apiOptions, ILogger<ProcessController> logger)
         {
-            _logger = logger;
+            apiOptions.Should().NotBeNull();
+
+            ApiOptions = apiOptions.Value;
+            Logger = logger;
         }
 
         [HttpPost]
@@ -30,9 +38,10 @@ namespace AI_Manager_Service.Controllers
         [HttpPost]
         public async Task<ActionResult> FileAsync(IFormFile file)
         {
-            if (!Validation.NotNull(file) || !Validation.FileSize(file, 0, 5))
+            if (Validation.IsNull(file) || Validation.FileSizeExceedsBounds(file, ApiOptions.MinFileSize, ApiOptions.MaxFileSize))
             {
-                return StatusCode(StatusCodes.Status400BadRequest, "File must be between 0 and 5 megabytes.");
+                Logger.LogDebug("File was either null or exceeded size bounds.");
+                return StatusCode(StatusCodes.Status400BadRequest, $"File must be between {ApiOptions.MinFileSize} and {ApiOptions.MaxFileSize} bytes.");
             }
             else
             {
