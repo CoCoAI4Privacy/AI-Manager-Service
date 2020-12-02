@@ -30,7 +30,7 @@ namespace AI_Manager_Service.Controllers
         }
 
         [HttpPost]
-        public IEnumerable<string> Url(string url)
+        public IEnumerable<string> ProcessUrl(Uri url)
         {
             throw new NotImplementedException();
         }
