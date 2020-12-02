@@ -28,7 +28,7 @@ namespace AI_Manager_Service
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddOpenTelemetryTracerProvider((builder) =>
+            services.AddOpenTelemetryTracing((builder) =>
                 builder
                     .AddAspNetCoreInstrumentation()
                     .AddGrpcClientInstrumentation()
@@ -41,6 +41,7 @@ namespace AI_Manager_Service
                     })
                     .Build()
                  );
+            services.AddGrpc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
