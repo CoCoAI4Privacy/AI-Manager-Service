@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using FluentAssertions;
 
 namespace AI_Manager_Service.Utilities
 {
@@ -9,6 +6,8 @@ namespace AI_Manager_Service.Utilities
     {
         public static long MegabytesToBytes(long megabytes)
         {
+            megabytes.Should().BeGreaterOrEqualTo(0);
+
             return megabytes * 1024 * 1024;
         }
     }

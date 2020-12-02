@@ -1,11 +1,5 @@
 ﻿using Xunit;
-using AI_Manager_Service.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.AspNetCore.Http;
 using AI_Manager_ServiceTests.TestUtils;
-using System.Diagnostics;
 using Ms = Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AI_Manager_Service.Utilities.Tests

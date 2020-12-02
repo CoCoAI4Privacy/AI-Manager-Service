@@ -1,8 +1,5 @@
 ﻿using Xunit;
-using AI_Manager_Service.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Ms = Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AI_Manager_Service.Utilities.Tests
 {
@@ -14,6 +11,7 @@ namespace AI_Manager_Service.Utilities.Tests
             Assert.True(Conversion.MegabytesToBytes(5) == 5242880);
             Assert.True(Conversion.MegabytesToBytes(1) == 1048576);
             Assert.True(Conversion.MegabytesToBytes(0) == 0);
+            Assert.Throws<Ms.AssertFailedException>(() => Conversion.MegabytesToBytes(-1));
         }
     }
 }
