@@ -2,7 +2,7 @@
 using AI_Manager_ServiceTests.TestUtils;
 using Ms = Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace AI_Manager_Service.Utilities.Tests
+namespace ComputationManager.Utilities.Tests
 {
     public class ValidationTests
     {

@@ -10,8 +10,13 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="6.0.0-alpha0001" />
-    <PackageReference Include="Grpc" Version="2.34.0-pre1" />
+    <PackageReference Include="Google.Protobuf" Version="3.14.0" />
+    <PackageReference Include="Grpc" Version="2.34.0" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.34.0-pre1" />
+    <PackageReference Include="Grpc.Tools" Version="2.34.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -25,5 +30,6 @@
     <PackageReference Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="1.0.0-rc1.1" />
     <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.0.0-rc1.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
+    <ProtoBuf Include="Protos\ComputeNodeServer.proto" GrpcServices="Server" />
   </ItemGroup>
 </Project>

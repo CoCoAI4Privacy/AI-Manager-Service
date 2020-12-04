@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 
-namespace AI_Manager_Service.Utilities
+namespace ComputationManager.Utilities
 {
     public static class Conversion
     {

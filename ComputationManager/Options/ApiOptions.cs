@@ -1,4 +1,4 @@
-﻿namespace AI_Manager_Service.Options
+﻿namespace ComputationManager.Options
 {
     public class ApiOptions
     {

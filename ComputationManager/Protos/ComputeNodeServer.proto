@@ -1,0 +1,19 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "ComputationManager.Protos";
+
+package compute_node;
+
+service ComputationManagerServer {
+	rpc SubscribeTasks (ClientRegistration) returns (stream TaskUpdate);
+}
+
+message ClientRegistration {
+	string id = 1;
+	string key = 2;
+	int32 gpus = 3;
+}
+
+message TaskUpdate {
+	string update_type = 1;
+}

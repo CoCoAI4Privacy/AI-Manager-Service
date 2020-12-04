@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using AI_Manager_Service.Options;
-using AI_Manager_Service.Utilities;
+using ComputationManager.Options;
+using ComputationManager.Utilities;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace AI_Manager_Service.Controllers
+namespace ComputationManager.Controllers
 {
     [ApiController]
     [Route("[controller]")]

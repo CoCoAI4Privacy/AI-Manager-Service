@@ -1,6 +1,6 @@
 using System;
 
-namespace AI_Manager_Service
+namespace ComputationManager
 {
     public class WeatherForecast
     {

@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AI Service\ComputationManager.csproj" />
+    <ProjectReference Include="..\ComputationManager\ComputationManager.csproj" />
   </ItemGroup>
 
 </Project>
